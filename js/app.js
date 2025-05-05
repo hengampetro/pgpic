@@ -14,10 +14,14 @@ var Toast , maxLoading, winframe, insideLoading, winconf;
 		
         
 		$(window).bind("load", function(){
-            persianDate.toLeapYearMode('astronomical');
-			var now = new persianDate();
-            //cl(new persianDate([1404,1,1]).toLocale('fa').format('dddd'));
-			showDays(now);
+            try{
+                persianDate.toLeapYearMode('astronomical');
+				var now = new persianDate();
+				showDays(now);
+			}catch(ex){
+				cl(ex);
+				maxLoading.hide();
+			}
 		});
 		$(window).bind("resize", function(){
 			resize();
