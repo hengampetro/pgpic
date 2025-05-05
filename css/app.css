@@ -207,5 +207,11 @@
 	.deactivedayitem{
 		display:none !important;
 	}
+    .jpcico{
+        width: 30px; height: auto; margin-top: 2px;
+    }
+    .jpctitletext1{
+        margin-right: 10px; font-size: 14px; font-weight: 320; color: #000; margin-top: 1px;
+    }
 	
 }
