@@ -100,6 +100,7 @@ var Toast , maxLoading, winframe, insideLoading, winconf;
 				},
 				fail : function(msg){
 					maxLoading.hide();
+                    cl(msg);
 					Toast.show(msg);
 				}
 			});
@@ -188,33 +189,10 @@ var Toast , maxLoading, winframe, insideLoading, winconf;
 		
 		var resize = function(){ 
 			//setTimeout(function(){
-			var wwidth = $(window).width();
-			var listclumns = 7;
-			if(wwidth<=550){
-				listclumns = 2;
-			}else if(wwidth<=900){
-				listclumns = 4;
-			}
-			
-			var boxs = $(".dayitem");
-			if(boxs.length<=0)
-				return;
-			var firstheight = $(boxs[0]).offset().top;
-			for(var i=0 ; i<boxs.length ; ){
-				var rowboxs = [];
-				for(var j=i ; i<boxs.length && j<i+listclumns ; j++){
-					rowboxs.push(boxs[j]);
-					//cl(j);
-				}
-				i = j;
-				var maxHeight = Math.max.apply(null, $(rowboxs).map(function(){ 
-					//cl(this);
+				var maxHeight = Math.max.apply(null, $(".dayitem").map(function(){ 
 					return $(this).find('.dayitemtitle').outerHeight(true)+$(this).find('.dayitemtitleevents').outerHeight(true);
 				}).get()); 
-				//cl("-----------------------------------");
-				$(rowboxs).height(maxHeight); 
-			}
-			
+				$(".dayitem").height(maxHeight); 
 			//},30); 
 		};
 		
